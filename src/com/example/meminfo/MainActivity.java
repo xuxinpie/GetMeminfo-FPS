@@ -133,7 +133,7 @@ public class MainActivity extends Activity {
 		return totalMemStr;
 	}
     //获得手机的内存信息 针对低版本手机
-    public synchronized String readTotalRam() {
+	public synchronized String readTotalRam() {
         long tm = 0;
         try {
             RandomAccessFile reader = new RandomAccessFile("/proc/meminfo", "r");

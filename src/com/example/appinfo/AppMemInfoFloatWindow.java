@@ -13,6 +13,8 @@ public class AppMemInfoFloatWindow extends TextView {
 	private long mInterval = 0L;
 	private long mLastTime = 0L;
 	private String pidMemString = " ";
+	private String curClassName = " ";
+	private MemInfoUpdatelistener mListener = null;
 	
 //	public interface MemInfoUpdateListener {
 //		
@@ -24,6 +26,11 @@ public class AppMemInfoFloatWindow extends TextView {
 		setText(" ");
 		
 	}
+	
+	public interface MemInfoUpdatelistener {
+		public void onUpdateMemInfo(String curClassName, String pidMemString);
+	}
+	
 	
 	@Override
 	public void draw(Canvas canvas) {
@@ -48,11 +55,24 @@ public class AppMemInfoFloatWindow extends TextView {
 //	}
 	
 	private void updateMemInfoWindow() {
-		setText("当前进程所占内存：" + pidMemString + " KB");
+		if (mListener != null) {
+			mListener.onUpdateMemInfo(curClassName, pidMemString);
+		}
+		setText("当前进程所占内存：" + pidMemString + " KB" + "\n" +
+				"当前顶层Activity：" +"\n" + curClassName + ""	
+				);
 	}
 
 	public void setPidMemString(String pidMemString) {
 		this.pidMemString = pidMemString;
+	}
+
+	public void setCurClassName(String curClassName) {
+		this.curClassName = curClassName; 
+	}
+	
+	public void setListener(MemInfoUpdatelistener listener) {
+		mListener = listener;
 	}
 	
 

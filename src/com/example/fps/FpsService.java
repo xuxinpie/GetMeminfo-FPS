@@ -11,7 +11,6 @@ import java.util.Date;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
-import android.app.ActivityManager;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
@@ -401,6 +400,7 @@ public class FpsService extends Service implements OnClickListener, FpsView.FpsU
     {
         if(mStartBtn.isEnabled())return;
         mCurrentRecords.add(new FpsRecord(fps, frameCount, realTime));
+        Log.d(TAG, "add data into mCurrentRecords.");
     }
     
 }

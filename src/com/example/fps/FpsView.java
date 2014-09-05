@@ -2,11 +2,9 @@ package com.example.fps;
 
 import java.text.DecimalFormat;
 
-import android.app.ActivityManager;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
-import android.os.Debug;
 import android.widget.TextView;
 
 /**
@@ -32,7 +30,6 @@ public class FpsView extends TextView {
     private double mMaxFps = 0.0;
     private double mMinFps = Double.MAX_VALUE;
     private double mAvgFps = 0.0;
-    private int pid = 0;
     private FpsUpdateListener mListener = null;
     private long mInterval = 0L;
     private long mLastTime = 0L;
